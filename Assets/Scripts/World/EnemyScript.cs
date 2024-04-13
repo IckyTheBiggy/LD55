@@ -41,7 +41,6 @@ public class EnemyScript : MonoBehaviour, IDamageable
     {
         if (!_attacking)
         {
-            _attacking = true;
             
             IDamageable damageable;
 
@@ -49,6 +48,8 @@ public class EnemyScript : MonoBehaviour, IDamageable
 
             if (damageable != null)
                 damageable.Damage(_damageAmount);
+            
+            _attacking = true;
             
             Invoke("ResetAttack", _attackSpeed);
         }
