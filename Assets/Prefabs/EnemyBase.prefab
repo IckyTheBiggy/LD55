@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agent: {fileID: 620882258702463934}
+  _attackDistance: 5
+  _damageAmount: 20
   _maxHealth: 100
 --- !u!195 &620882258702463934
 NavMeshAgent:

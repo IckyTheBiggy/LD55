@@ -13,14 +13,14 @@ public class BaseScript : MonoBehaviour, IDamageable
 
     private void HandleBaseDestruction()
     {
-        
+        Debug.Log("Game Over");
     }
 
     public void Damage(int damage)
     {
         _health -= damage;
         
-        if (_health > 0)
+        if (_health >= 0)
             HandleBaseDestruction();
     }
 }
