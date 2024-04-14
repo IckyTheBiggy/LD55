@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 6813662834241743269}
   - component: {fileID: 2525983374652785499}
   - component: {fileID: 4212669433310579761}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TroopBase
-  m_TagString: Untagged
+  m_TagString: Troop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 2819259497691417271}
   - component: {fileID: 9148787029874521401}
   - component: {fileID: 8571685019721653447}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}

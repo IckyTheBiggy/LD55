@@ -12,9 +12,10 @@ namespace Core
             set
             {
                 if (_hoveredObject == value) return;
-                if (_hoveredObject != null) _hoveredObject.GetComponent<ISelectable>().PointerExit();
+                if (_hoveredObject != null && _hoveredObject.TryGetComponent<ISelectable>(out var selectable)) 
+                    selectable.PointerExit();
                 _hoveredObject = value;
-                if (value == null || !value.TryGetComponent<ISelectable>(out var selectable)) return;
+                if (value == null || !value.TryGetComponent(out selectable)) return;
                 selectable.PointerEnter();
             }
         }
@@ -26,9 +27,11 @@ namespace Core
             set
             {
                 if (_selectedObject == value) return;
-                if (_selectedObject != null) _selectedObject.GetComponent<ISelectable>().Deselect();
+                if (_selectedObject != null && _selectedObject.TryGetComponent<ISelectable>(out var selectable))
+                    selectable.Deselect();
                 _selectedObject = value;
-                _selectedObject.GetComponent<ISelectable>().Select();
+                if (value == null || !value.TryGetComponent(out selectable)) return;
+                selectable.Select();
             }
         }
 
@@ -36,22 +39,23 @@ namespace Core
         
         private void Update()
         {
-            var pos = GameManager.Instance.MainCam.ScreenToWorldPoint(Misc.GetPointerPos());
+            var pos = Misc.GetPointerPos();
             HoveredObject = GetHoveredObject(pos);
             if (HoveredObject == null && PointerUp()) SelectedObject = null;
-            if (HoveredObject == null) return;
-            if (PointerDown()) HoveredObject.GetComponent<ISelectable>().PointerDown();
-            if (Pointer()) HoveredObject.GetComponent<ISelectable>().PointerDown();
-            if (PointerUp()) HoveredObject.GetComponent<ISelectable>().PointerUp();
+            if (HoveredObject == null || !HoveredObject.TryGetComponent<ISelectable>(out var selectable)) return;
+            if (PointerDown()) selectable.PointerDown();
+            if (Pointer()) selectable.PointerDown();
+            if (PointerUp()) selectable.PointerUp();
         }
 
-        private GameObject GetHoveredObject(Vector3 pointerPos) =>
-            !Physics.Raycast(
-                pointerPos,
-                GameManager.Instance.MainCam.transform.forward,
-                out var hit,
-                300,
-                _selectionLayerMask) ? null : hit.transform.gameObject;
+        private GameObject GetHoveredObject(Vector3 pointerPos)
+        {
+            var mainCamera = GameManager.Instance.MainCam;
+            var ray = mainCamera.ScreenPointToRay(pointerPos);
+            Debug.DrawRay(ray.origin, ray.direction * 300f, UnityEngine.Color.blue);
+            return Physics.Raycast(ray, out var hit, 300, _selectionLayerMask) ?
+                hit.transform.gameObject : null;
+        }
         
         private bool PointerDown() =>
             !Misc.IsPointerOverUI &&
