@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5184171856847204910}
   - component: {fileID: 1117459347956214170}
   - component: {fileID: 620882258702463934}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemyBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,6 +49,7 @@ MonoBehaviour:
   _agent: {fileID: 620882258702463934}
   _attackDistance: 5
   _damageAmount: 20
+  _attackSpeed: 0
   _maxHealth: 100
 --- !u!195 &620882258702463934
 NavMeshAgent:
@@ -84,7 +85,7 @@ GameObject:
   - component: {fileID: 7608502493317303560}
   - component: {fileID: 677426589808990224}
   - component: {fileID: 3536524240183671656}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
