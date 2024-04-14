@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using World;
 
 public class TroopAI : MonoBehaviour
 {
@@ -12,7 +14,6 @@ public class TroopAI : MonoBehaviour
 
     private Transform _target;
     private bool _foundTarget;
-
     private bool _attacking;
 
     private void Start()
@@ -22,7 +23,7 @@ public class TroopAI : MonoBehaviour
 
     private void Update()
     {
-        return;
+        if (_agent.hasPath) return;
         FindEnemy();
 
         if (_foundTarget)
