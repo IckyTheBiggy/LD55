@@ -57,8 +57,8 @@ namespace UI
             while (_shown ? lerpPos < 1 : lerpPos > 0)
             {
                 _group.alpha = _shown
-                    ? Misc.UpdateLerpPos(ref lerpPos, 0.15f, false, Easings.Types.SineInOut)
-                    : Misc.ReverseLerpPos(ref lerpPos, 0.15f, false, Easings.Types.SineInOut);
+                    ? Misc.UpdateLerpPos(ref lerpPos, 0.2f * GameManager.Instance.AnimationSpeed, false, Easings.Types.SineInOut)
+                    : Misc.ReverseLerpPos(ref lerpPos, 0.2f * GameManager.Instance.AnimationSpeed, false, Easings.Types.SineInOut);
                 yield return null;
             }
             _fadeRoutine = null;
