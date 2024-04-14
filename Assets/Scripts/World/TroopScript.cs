@@ -1,10 +1,16 @@
 using Core;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace World
 {
-    public class TroopScript : MonoBehaviour, ISelectable
+    public class TroopScript : MonoBehaviour, ISelectable, IDisplayable
     {
+        [SerializeField] public string Name;
+        [SerializeField] public int Health;
+        [SerializeField] public int MaxHealth;
+        [SerializeField] public Sprite Sprite;
+        #region ISelectable
         public void PointerEnter()
         {
             Debug.Log("Pointer Enter");
@@ -39,5 +45,13 @@ namespace World
         {
             Debug.Log("Deselect");
         }
+        #endregion
+
+        #region IDisplayable
+        public string GetName() => Name;
+        public int GetHealth() => Health;
+        public int GetMaxHealth() => MaxHealth;
+        public Sprite GetSprite() => Sprite;
+        #endregion
     }
 }

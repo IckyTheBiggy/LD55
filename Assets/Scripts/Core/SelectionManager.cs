@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using NnUtils.Scripts;
 
@@ -15,10 +16,12 @@ namespace Core
                 if (_hoveredObject != null && _hoveredObject.TryGetComponent<ISelectable>(out var selectable)) 
                     selectable.PointerExit();
                 _hoveredObject = value;
+                OnHoveredObjectChanged?.Invoke();
                 if (value == null || !value.TryGetComponent(out selectable)) return;
                 selectable.PointerEnter();
             }
         }
+        public Action OnHoveredObjectChanged;
         
         private GameObject _selectedObject;
         public GameObject SelectedObject
@@ -30,10 +33,12 @@ namespace Core
                 if (_selectedObject != null && _selectedObject.TryGetComponent<ISelectable>(out var selectable))
                     selectable.Deselect();
                 _selectedObject = value;
+                OnSelectedObjectChanged?.Invoke();
                 if (value == null || !value.TryGetComponent(out selectable)) return;
                 selectable.Select();
             }
         }
+        public Action OnSelectedObjectChanged;
 
         [SerializeField] private LayerMask _selectionLayerMask;
         

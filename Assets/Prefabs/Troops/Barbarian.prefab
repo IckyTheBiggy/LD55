@@ -126,6 +126,22 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 1.2
       objectReference: {fileID: 0}
+    - target: {fileID: 5220558200620139309, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
+      propertyPath: Name
+      value: Barbarian
+      objectReference: {fileID: 0}
+    - target: {fileID: 5220558200620139309, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
+      propertyPath: Health
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5220558200620139309, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
+      propertyPath: Sprite
+      value: 
+      objectReference: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 5220558200620139309, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
+      propertyPath: MaxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6304922804123827019, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
       propertyPath: m_Name
       value: Barbarian
@@ -141,28 +157,8 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2897205057025730669, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1552056699076950502}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6304922804123827019, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 933208171356925918}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
---- !u!1 &2425833401333645943 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6304922804123827019, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
-  m_PrefabInstance: {fileID: 8562995743605553468}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &933208171356925918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2425833401333645943}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c50245a7deb2eec93a40803c3b5cb50c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &6836798368571822417 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2897205057025730669, guid: 12f22112c572340209fe6089b544bdd1, type: 3}

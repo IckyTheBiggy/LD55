@@ -1,34 +1,41 @@
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+namespace Core
 {
-    private static GameManager _instance;
-
-    public static GameManager Instance
+    public class GameManager : MonoBehaviour
     {
-        get
+        private static GameManager _instance;
+
+        public static GameManager Instance
         {
-            if (_instance == null)
-                _instance = new GameObject("Game Manager", typeof(GameManager)).GetComponent<GameManager>();
-            return _instance;
-        }
-        private set
-        {
-            if (_instance != null && _instance != value)
+            get
             {
-                Destroy(value.gameObject);
-                return;
+                if (_instance == null)
+                    _instance = new GameObject("Game Manager", typeof(GameManager)).GetComponent<GameManager>();
+                return _instance;
             }
+            private set
+            {
+                if (_instance != null && _instance != value)
+                {
+                    Destroy(value.gameObject);
+                    return;
+                }
 
-            _instance = value;
+                _instance = value;
+            }
         }
+
+        private void Awake() => _instance = GetComponent<GameManager>();
+
+        private Camera _mainCam;
+        public Camera MainCam => _mainCam = _mainCam == null ? Camera.main : _mainCam;
+
+        private Transform _base;
+        public Transform Base => _base = _base == null ? GameObject.FindGameObjectWithTag("Base").transform : _base;
+
+        private SelectionManager _selectionManager;
+        public SelectionManager SelectionManager => _selectionManager =
+            _selectionManager == null ? GetComponent<SelectionManager>() : _selectionManager;
     }
-
-    private void Awake() => _instance = GetComponent<GameManager>();
-
-    private Camera _mainCam;
-    public Camera MainCam => _mainCam = _mainCam == null ? Camera.main : _mainCam;
-
-    private Transform _base;
-    public Transform Base => _base = _base == null ? GameObject.FindGameObjectWithTag("Base").transform : _base;
 }
