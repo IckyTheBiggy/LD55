@@ -7,37 +7,37 @@ namespace World
     {
         public void PointerEnter()
         {
-            throw new System.NotImplementedException();
+            Debug.Log("Pointer Enter");
         }
 
         public void PointerExit()
         {
-            throw new System.NotImplementedException();
+            Debug.Log("Pointer Exit");
         }
 
         public void PointerDown()
         {
-            throw new System.NotImplementedException();
+            Debug.Log("Pointer Down");
         }
 
         public void Pointer()
         {
-            throw new System.NotImplementedException();
+            Debug.Log("Pointer");
         }
 
         public void PointerUp()
         {
-            throw new System.NotImplementedException();
+            Debug.Log("Pointer Up");
         }
 
         public void Select()
         {
-            throw new System.NotImplementedException();
+            Debug.Log("Select");
         }
 
         public void Deselect()
         {
-            throw new System.NotImplementedException();
+            Debug.Log("Deselect");
         }
     }
 }

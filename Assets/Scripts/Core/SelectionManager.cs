@@ -41,10 +41,10 @@ namespace Core
         {
             var pos = Misc.GetPointerPos();
             HoveredObject = GetHoveredObject(pos);
-            if (HoveredObject == null && PointerUp()) SelectedObject = null;
+            if (HoveredObject == null && PointerUp()) { SelectedObject = null; return; }
             if (HoveredObject == null || !HoveredObject.TryGetComponent<ISelectable>(out var selectable)) return;
             if (PointerDown()) selectable.PointerDown();
-            if (Pointer()) selectable.PointerDown();
+            if (Pointer()) selectable.Pointer();
             if (PointerUp()) selectable.PointerUp();
         }
 

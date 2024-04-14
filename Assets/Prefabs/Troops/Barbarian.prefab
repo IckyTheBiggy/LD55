@@ -70,6 +70,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2525983374652785499, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2897205057025730669, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -110,9 +114,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4212669433310579761, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
+      propertyPath: m_Size.y
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4212669433310579761, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4212669433310579761, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
+      propertyPath: m_Center.y
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 6304922804123827019, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
       propertyPath: m_Name
       value: Barbarian
+      objectReference: {fileID: 0}
+    - target: {fileID: 6813662834241743269, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
