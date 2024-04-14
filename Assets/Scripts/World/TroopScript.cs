@@ -30,7 +30,7 @@ namespace World
         {
             var mainCamera = GameManager.Instance.MainCam;
             var ray = mainCamera.ScreenPointToRay(Misc.GetPointerPos());
-            if (!Input.GetKeyUp(KeyCode.Mouse0) || Misc.IsPointerOverUI) return;
+            if (Misc.IsPointerOverUI) return;
             if (!Physics.Raycast(ray, out var hit, 300, _relocationMask)) return;
             _ai.Relocate(hit.point);
             GameManager.Instance.IsRelocating = false;
