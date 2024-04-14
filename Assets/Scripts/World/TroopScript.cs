@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Core;
 using NnUtils.Scripts;
@@ -6,14 +7,19 @@ using UnityEngine.UI;
 
 namespace World
 {
-    public class TroopScript : MonoBehaviour, ISelectable, IDisplayable
+    public class TroopScript : MonoBehaviour, ISelectable, IDisplayable, IDamageable
     {
         public string Name;
-        public int Health;
+        [HideInInspector] public int Health;
         public int MaxHealth;
         public Sprite Sprite;
         [SerializeField] private TroopAI _ai;
         [SerializeField] private LayerMask _relocationMask;
+
+        private void Start()
+        {
+            Health = MaxHealth;
+        }
 
         private Coroutine _selectedRoutine;
         private IEnumerator SelectedRoutine()
@@ -78,5 +84,13 @@ namespace World
         public int GetMaxHealth() => MaxHealth;
         public Sprite GetSprite() => Sprite;
         #endregion
+
+        public void Damage(int damage)
+        {
+            Health -= damage;
+            
+            if (Health <= 0)
+                Destroy(gameObject);
+        }
     }
 }

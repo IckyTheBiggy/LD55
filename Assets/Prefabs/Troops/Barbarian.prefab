@@ -155,8 +155,20 @@ PrefabInstance:
       value: Barbarian
       objectReference: {fileID: 0}
     - target: {fileID: 6813662834241743269, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
+      propertyPath: _damage
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 6813662834241743269, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6813662834241743269, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
+      propertyPath: _attackSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6813662834241743269, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
+      propertyPath: _attackDistance
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

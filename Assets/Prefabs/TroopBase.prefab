@@ -50,8 +50,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: 
   Health: 0
-  MaxHealth: 0
-  Image: {fileID: 0}
+  MaxHealth: 100
+  Sprite: {fileID: 0}
+  _ai: {fileID: 0}
+  _relocationMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &6813662834241743269
 MonoBehaviour:
   m_ObjectHideFlags: 0

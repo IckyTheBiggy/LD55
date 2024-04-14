@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1117459347956214170, guid: 58340ac169d59f1d583a288ea07f9a56, type: 3}
       propertyPath: _attackSpeed
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1117459347956214170, guid: 58340ac169d59f1d583a288ea07f9a56, type: 3}
       propertyPath: _damageAmount
-      value: 50
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3245975193486585205, guid: 58340ac169d59f1d583a288ea07f9a56, type: 3}
       propertyPath: m_Name
