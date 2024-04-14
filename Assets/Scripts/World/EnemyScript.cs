@@ -17,55 +17,19 @@ public class EnemyScript : MonoBehaviour, IDamageable
     private Transform _target;
 
     private int _health;
-    
+
     private void Start()
     {
-        _health = _maxHealth;
         
-        _target = GameManager.Instance.Base;
     }
 
     private void Update()
     {
-        float distanceToBase = Vector3.Distance(transform.position, _target.position);
-
-        if (distanceToBase < _attackDistance)
-        {
-            Attack();
-            _agent.SetDestination(transform.position);
-        }
-        else
-            _agent.SetDestination(_target.position);
-    }
-
-    private void Attack()
-    {
-        if (!_attacking)
-        {
-            
-            IDamageable damageable;
-
-            damageable = _target.gameObject.GetComponent<IDamageable>();
-
-            if (damageable != null)
-                damageable.Damage(_damageAmount);
-            
-            _attacking = true;
-            
-            Invoke("ResetAttack", _attackSpeed);
-        }
-    }
-
-    private void ResetAttack()
-    {
-        _attacking = false;
+        
     }
 
     public void Damage(int damage)
     {
-        _health -= damage;
         
-        if (_health <= 0)
-            Destroy(gameObject);
     }
 }
