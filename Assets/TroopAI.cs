@@ -6,67 +6,58 @@ using World;
 
 public class TroopAI : MonoBehaviour
 {
+    [SerializeField] private Rigidbody _rb;
     [SerializeField] private int _damage;
     [SerializeField] private NavMeshAgent _agent;
-    [SerializeField] private float _findRange;
+    [SerializeField] private float _detectionRange;
     [SerializeField] private float _attackSpeed;
     [SerializeField] private float _attackDistance;
 
-    private Transform _target;
+    private Animator _animator;
     private bool _foundTarget;
     private bool _attacking;
 
-    private void Start()
-    {
-
-    }
+    private void Start() => _animator = GetComponentInChildren<Animator>();
 
     private void Update()
     {
-        if (_agent.hasPath) return;
-        FindEnemy();
-
-        if (_foundTarget)
-            _agent.SetDestination(_target.position);
+        //if (_agent.hasPath) return;
+        GameObject target = null;
+        
+        if (_rb.velocity.magnitude > 0)
+            _animator.SetBool("Moving", true);
         else
-            _agent.SetDestination(transform.position);
+            _animator.SetBool("Moving", false);
 
-        if (_target != null)
+        Collider[] enemies = Physics.OverlapSphere(transform.position, _detectionRange);
+        foreach (var enemy in enemies)
         {
-            float distanceToTarget = Vector3.Distance(transform.position, _target.position);
+            if (enemy.CompareTag("Enemy"))
+            {
+                target = enemy.gameObject;
+                break;
+            }
+        }
 
-            if (distanceToTarget < _attackDistance)
-                Attack();
+        if (target != null)
+        {
+            _agent.SetDestination(target.transform.position);
+
+            float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
+            if (distanceToTarget <= _attackDistance)
+            {
+                _animator.SetTrigger("Attacking");
+                Attack(target);
+            }
         }
     }
 
-    private void FindEnemy()
-    {
-        if (_target == null)
-            _foundTarget = false;
-
-        if (_foundTarget)
-            return;
-
-        Collider[] colliders = Physics.OverlapSphere(transform.position, _findRange);
-
-        foreach (var collider in colliders)
-        {
-            if (collider.tag == "Enemy")
-                _target = collider.transform;
-        }
-
-        if (_target != null)
-            _foundTarget = true;
-    }
-
-    private void Attack()
+    private void Attack(GameObject objectToAttack)
     {
         if (!_attacking)
         {
             IDamageable damageable;
-
-            damageable = _target.gameObject.GetComponent<IDamageable>();
+            damageable = objectToAttack.gameObject.GetComponent<IDamageable>();
 
             if (damageable != null)
                 damageable.Damage(_damage);
@@ -81,7 +72,7 @@ public class TroopAI : MonoBehaviour
     {
         _attacking = false;
     }
-
+    
     public void Relocate(Vector3 position)
     {
         _agent.SetDestination(position); //nan add the rest of the logic here

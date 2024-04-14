@@ -55,13 +55,42 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ee537b92fb04f883dabc0f5390a6bc2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 951908516079751962}
   m_SourcePrefab: {fileID: 100100000, guid: ee537b92fb04f883dabc0f5390a6bc2e, type: 3}
 --- !u!4 &1552056699076950502 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ee537b92fb04f883dabc0f5390a6bc2e, type: 3}
   m_PrefabInstance: {fileID: 1297241361917042189}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2216285539270615900 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ee537b92fb04f883dabc0f5390a6bc2e, type: 3}
+  m_PrefabInstance: {fileID: 1297241361917042189}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &951908516079751962
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2216285539270615900}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2b7f4d6507ab37818af10afa6faea549, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &8562995743605553468
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70,6 +99,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1184862899165398806, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1184862899165398806, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1184862899165398806, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2525983374652785499, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -116,7 +157,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4212669433310579761, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
       propertyPath: m_Size.y
-      value: 2.4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4212669433310579761, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
       propertyPath: m_Enabled
@@ -124,7 +165,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4212669433310579761, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
       propertyPath: m_Center.y
-      value: 1.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5220558200620139309, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
       propertyPath: _ai
@@ -156,7 +197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6813662834241743269, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
       propertyPath: _damage
-      value: 80
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6813662834241743269, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
       propertyPath: m_Enabled
@@ -164,11 +205,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6813662834241743269, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
       propertyPath: _attackSpeed
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6813662834241743269, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
       propertyPath: _attackDistance
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6813662834241743269, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
+      propertyPath: _detectionRange
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

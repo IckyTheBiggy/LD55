@@ -22,6 +22,7 @@ namespace World
         }
 
         private Coroutine _selectedRoutine;
+
         private IEnumerator SelectedRoutine()
         {
             while (true)
@@ -41,7 +42,7 @@ namespace World
             _ai.Relocate(hit.point);
             GameManager.Instance.IsRelocating = false;
         }
-        
+
         #region ISelectable
         public void PointerEnter()
         {
@@ -68,6 +69,7 @@ namespace World
             Misc.RestartCoroutine(this, ref _selectedRoutine, SelectedRoutine());
         }
 
+
         public void Deselect()
         {
             if (_selectedRoutine != null)
@@ -76,19 +78,22 @@ namespace World
                 _selectedRoutine = null;
             }
         }
+
         #endregion
 
         #region IDisplayable
+
         public string GetName() => Name;
         public int GetHealth() => Health;
         public int GetMaxHealth() => MaxHealth;
         public Sprite GetSprite() => Sprite;
+
         #endregion
 
         public void Damage(int damage)
         {
             Health -= damage;
-            
+
             if (Health <= 0)
                 Destroy(gameObject);
         }
