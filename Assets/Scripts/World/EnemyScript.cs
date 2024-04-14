@@ -62,6 +62,9 @@ public class EnemyScript : MonoBehaviour, IDamageable
 
     public void Damage(int damage)
     {
+        _health -= damage;
         
+        if (_health <= 0)
+            Destroy(gameObject);
     }
 }

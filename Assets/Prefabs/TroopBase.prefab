@@ -50,6 +50,8 @@ MonoBehaviour:
   _damage: 20
   _agent: {fileID: 2525983374652785499}
   _findRange: 10
+  _attackSpeed: 2
+  _attackDistance: 2
 --- !u!195 &2525983374652785499
 NavMeshAgent:
   m_ObjectHideFlags: 0
