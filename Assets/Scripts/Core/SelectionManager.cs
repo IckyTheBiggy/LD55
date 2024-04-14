@@ -44,17 +44,23 @@ namespace Core
         
         private void Update()
         {
+            if (GameManager.Instance.IsRelocating) return;
             var pos = Misc.GetPointerPos();
             HoveredObject = GetHoveredObject(pos);
-            if (HoveredObject == null && PointerUp()) { SelectedObject = null; return; }
+            if (HoveredObject == null && !Misc.IsPointerOverUI && PointerUp()) { SelectedObject = null; return; }
             if (HoveredObject == null || !HoveredObject.TryGetComponent<ISelectable>(out var selectable)) return;
             if (PointerDown()) selectable.PointerDown();
             if (Pointer()) selectable.Pointer();
-            if (PointerUp()) selectable.PointerUp();
+            if (PointerUp())
+            {
+                selectable.PointerUp();
+                if (HoveredObject != null) SelectedObject = HoveredObject;
+            }
         }
 
         private GameObject GetHoveredObject(Vector3 pointerPos)
         {
+            if (Misc.IsPointerOverUI) return null;
             var mainCamera = GameManager.Instance.MainCam;
             var ray = mainCamera.ScreenPointToRay(pointerPos);
             return Physics.Raycast(ray, out var hit, 300, _selectionLayerMask) ?

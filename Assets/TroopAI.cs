@@ -22,6 +22,7 @@ public class TroopAI : MonoBehaviour
 
     private void Update()
     {
+        return;
         FindEnemy();
 
         if (_foundTarget)
@@ -80,7 +81,7 @@ public class TroopAI : MonoBehaviour
         _attacking = false;
     }
 
-    public void MoveTo(Vector3 position)
+    public void Relocate(Vector3 position)
     {
         _agent.SetDestination(position); //nan add the rest of the logic here
         //I am thinking that he shouldn't target enemies if he is moving because that'd give u less control
