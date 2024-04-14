@@ -27,7 +27,7 @@ namespace Core
             }
         }
 
-        private void Awake() => _instance = GetComponent<GameManager>();
+        private void Awake() => Instance = GetComponent<GameManager>();
 
         private Camera _mainCam;
         public Camera MainCam => _mainCam = _mainCam == null ? Camera.main : _mainCam;
