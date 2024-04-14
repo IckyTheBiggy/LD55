@@ -57,7 +57,6 @@ namespace Core
         {
             var mainCamera = GameManager.Instance.MainCam;
             var ray = mainCamera.ScreenPointToRay(pointerPos);
-            Debug.DrawRay(ray.origin, ray.direction * 300f, UnityEngine.Color.blue);
             return Physics.Raycast(ray, out var hit, 300, _selectionLayerMask) ?
                 hit.transform.gameObject : null;
         }
