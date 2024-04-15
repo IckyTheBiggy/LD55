@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7915971654191948849
+--- !u!1 &1853672147613739687
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,7 +8,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5741757264786878621}
+  - component: {fileID: 2016719451435214435}
   m_Layer: 0
   m_Name: Mage
   m_TagString: Untagged
@@ -16,29 +16,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5741757264786878621
+--- !u!4 &2016719451435214435
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7915971654191948849}
+  m_GameObject: {fileID: 1853672147613739687}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.9, z: 0.75}
+  m_LocalPosition: {x: 0, y: 4, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7283690594342152607}
+  - {fileID: 3224255722206641367}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &7106231045370105460
+--- !u!1001 &3113221004853828412
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 5741757264786878621}
+    m_TransformParent: {fileID: 2016719451435214435}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: cec52c157d7dc993a8defd20789d8559, type: 3}
       propertyPath: m_LocalPosition.x
@@ -80,17 +80,62 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5875712773760515218, guid: cec52c157d7dc993a8defd20789d8559, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cec52c157d7dc993a8defd20789d8559, type: 3}
       propertyPath: m_Name
       value: Mage
       objectReference: {fileID: 0}
+    - target: {fileID: 2677596514934467036, guid: cec52c157d7dc993a8defd20789d8559, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4034608614429032291, guid: cec52c157d7dc993a8defd20789d8559, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7253693634380043143, guid: cec52c157d7dc993a8defd20789d8559, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cec52c157d7dc993a8defd20789d8559, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9136759949192606374}
   m_SourcePrefab: {fileID: 100100000, guid: cec52c157d7dc993a8defd20789d8559, type: 3}
---- !u!4 &7283690594342152607 stripped
+--- !u!1 &2879220539813389933 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cec52c157d7dc993a8defd20789d8559, type: 3}
+  m_PrefabInstance: {fileID: 3113221004853828412}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &9136759949192606374
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2879220539813389933}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 77e7f2cf6dbe892ebaecfce64f770d55, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!4 &3224255722206641367 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cec52c157d7dc993a8defd20789d8559, type: 3}
-  m_PrefabInstance: {fileID: 7106231045370105460}
+  m_PrefabInstance: {fileID: 3113221004853828412}
   m_PrefabAsset: {fileID: 0}
