@@ -5,7 +5,6 @@ namespace World
 {
     public class TroopAI : MonoBehaviour
     {
-        [SerializeField] private Rigidbody _rb;
         [SerializeField] private int _damage;
         [SerializeField] private NavMeshAgent _agent;
         [SerializeField] private float _detectionRange;
@@ -17,14 +16,13 @@ namespace World
         private Animator _animator;
         private bool _foundTarget;
         private bool _attacking;
-        private static readonly int Moving = Animator.StringToHash("Moving");
-        private static readonly int Attacking = Animator.StringToHash("Attacking");
 
         private void Start() => _animator = GetComponentInChildren<Animator>();
 
         private void Update()
         {
-            _animator.SetBool(Moving, _rb.velocity.magnitude > 0.1f);
+            //_animator.SetFloat("Speed", _rb.velocity.magnitude);
+            
             var target = GetTarget();
             
             if (_isRelocating)
@@ -54,7 +52,7 @@ namespace World
 
             var damageable = target.GetComponent<IDamageable>();
             damageable?.Damage(_damage);
-            _animator.SetTrigger(Attacking);
+            _animator.SetTrigger("Attacking");
             _attacking = true;
             Invoke("ResetAttack", _attackSpeed);
         }

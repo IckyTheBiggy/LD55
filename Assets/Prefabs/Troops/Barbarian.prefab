@@ -5071,6 +5071,10 @@ PrefabInstance:
       value: Barbarian
       objectReference: {fileID: 0}
     - target: {fileID: 6813662834241743269, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
+      propertyPath: _rb
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6813662834241743269, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
       propertyPath: _damage
       value: 20
       objectReference: {fileID: 0}
@@ -5090,7 +5094,8 @@ PrefabInstance:
       propertyPath: _detectionRange
       value: 10
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -1184862899165398806, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
     m_RemovedGameObjects:
     - {fileID: 7489094598996795054, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
     m_AddedGameObjects:

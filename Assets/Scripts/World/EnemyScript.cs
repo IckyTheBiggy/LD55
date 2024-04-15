@@ -6,7 +6,6 @@ using UnityEngine.AI;
 public class EnemyScript : MonoBehaviour, IDamageable
 {
     [SerializeField] private NavMeshAgent _agent;
-    [SerializeField] private Rigidbody _rb;
     [SerializeField] private float _detectionRange;
     [SerializeField] private float _baseAttackDistance;
     [SerializeField] private float _attackDistance;
@@ -63,10 +62,6 @@ public class EnemyScript : MonoBehaviour, IDamageable
 
         _agent.SetDestination(_destination);
         
-        if (_rb.velocity.magnitude > 0)
-            _animator.SetBool("Moving", true);
-        else
-            _animator.SetBool("Moving", false);
     }
 
     private void Relocate(Vector3 position)

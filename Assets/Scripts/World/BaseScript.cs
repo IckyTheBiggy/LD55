@@ -1,18 +1,19 @@
+using NnUtils.Scripts.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BaseScript : MonoBehaviour, IDamageable
 {
     [SerializeField] private int _maxHealth;
-    [SerializeField] private Slider _healthBar;
+    [SerializeField] private NBar _healthBar;
 
     private int _health;
     
     private void Start()
     {
         _health = _maxHealth;
-        _healthBar.maxValue = _maxHealth;
-        _healthBar.value = _health;
+        _healthBar.Max = _maxHealth;
+        _healthBar.Value = _health;
     }
 
     private void HandleBaseDestruction()
@@ -23,7 +24,7 @@ public class BaseScript : MonoBehaviour, IDamageable
     public void Damage(int damage)
     {
         _health -= damage;
-        _healthBar.value = _health;
+        _healthBar.Value = _health;
         
         if (_health <= 0)
             HandleBaseDestruction();
