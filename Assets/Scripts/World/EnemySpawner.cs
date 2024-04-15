@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [SerializeField] private TMP_Text _currentWaveText;
+    
     [SerializeField] private float _waves;
     [SerializeField] private float _timeBetweenWaves;
     [SerializeField] private float _timeBetweenEnemySpawns;
@@ -43,6 +46,12 @@ public class EnemySpawner : MonoBehaviour
             enemiesPerWave =
                 Mathf.Min(_initialEnemiesPerWave + Mathf.FloorToInt(_enemySpawnRateIncrease * _currentWave),
                     _maxEnemiesPerWave);
+            UpdateCurrentWaveText(_currentWave);
         }
+    }
+
+    private void UpdateCurrentWaveText(int wave)
+    {
+        _currentWaveText.text = wave.ToString();
     }
 }
