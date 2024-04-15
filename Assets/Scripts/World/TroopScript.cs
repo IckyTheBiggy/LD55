@@ -1,7 +1,9 @@
 using System.Collections;
+using Assets.NnUtils.Scripts;
 using Core;
 using NnUtils.Scripts;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace World
 {
@@ -11,20 +13,51 @@ namespace World
         [HideInInspector] public int Health;
         public int MaxHealth;
         public Sprite Sprite;
+        public bool IsSpawning;
+        [SerializeField] private GameObject _meshObject;
         [SerializeField] private TroopAI _ai;
+        [SerializeField] private NavMeshAgent _navMeshAgent;
         [SerializeField] private LayerMask _relocationMask;
+        [SerializeField] private ParticleSystem _spawnParticles;
         [SerializeField] private ParticleSystem _hitParticles;
         [SerializeField] private ParticleSystem _destroyParticles;
 
         private void Start()
         {
             Health = MaxHealth;
+            IsSpawning = true;
+            _ai.enabled = false;
+            _navMeshAgent.enabled = false;
+            Misc.RestartCoroutine(this, ref _spawnRoutine, SpawnRoutine());
         }
 
+        private Coroutine _spawnRoutine;
+        private IEnumerator SpawnRoutine()
+        {
+            float lerpPos = 0;
+            var targetPos = _meshObject.transform.localPosition;
+            var startPos = targetPos;
+            startPos.y -= 4;
+            _spawnParticles.Play();
+            
+            while (lerpPos < 1)
+            {
+                var t = Misc.UpdateLerpPos(ref lerpPos, 3, false, Easings.Types.CubicOut);
+                _meshObject.transform.localPosition = Vector3.Lerp(startPos, targetPos, t);
+                yield return null;
+            }
+            
+            _spawnParticles.Stop();
+            _ai.enabled = true;
+            _navMeshAgent.enabled = true;
+            IsSpawning = false;
+            _spawnRoutine = null;
+        }
+        
         private Coroutine _selectedRoutine;
-
         private IEnumerator SelectedRoutine()
         {
+            if (IsSpawning) yield break;
             while (true)
             {
                 if (Input.GetKeyDown(KeyCode.R)) GameManager.Instance.IsRelocating = !GameManager.Instance.IsRelocating;

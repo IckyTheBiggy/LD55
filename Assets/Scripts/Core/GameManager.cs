@@ -5,6 +5,7 @@ namespace Core
     public class GameManager : MonoBehaviour
     {
         public bool IsRelocating;
+        public bool IsSpawning;
         
         [SerializeField] public float AnimationSpeed = 1;
         
