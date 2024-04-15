@@ -1,9 +1,7 @@
-using System;
 using System.Collections;
 using Core;
 using NnUtils.Scripts;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace World
 {

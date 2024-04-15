@@ -88,6 +88,12 @@ namespace NnUtils.Scripts
             target = sender.StartCoroutine(routine);
         }
 
+        public static void StopCoroutine(MonoBehaviour sender, ref Coroutine target)
+        {
+            if (target != null) sender.StopCoroutine(target);
+            target = null;
+        }
+
         public static int RandomInvert => Random.Range(0, 2) == 0 ? 1 : -1;
 
         public static Vector2 AbsV2(Vector2 input) => new(Mathf.Abs(input.x), Mathf.Abs(input.y));
