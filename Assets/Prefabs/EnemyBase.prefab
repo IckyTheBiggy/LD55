@@ -55,6 +55,7 @@ MonoBehaviour:
   _attackDistance: 5
   _damageAmount: 20
   _attackSpeed: 2
+  _hitParticles: {fileID: 8748812033267986221, guid: ed50492e6f81367e980e6729e3f7e5d1, type: 3}
   _destoryParticles: {fileID: 8748812033267986221, guid: 8956d585104d59bcfa7c7e4bb5cb6949, type: 3}
   _maxHealth: 100
 --- !u!195 &620882258702463934
