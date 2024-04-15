@@ -1,18 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class MoneyManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private TMP_Text _moneyText;
+    [SerializeField] private int _startingMoney;
+    [HideInInspector] public int Money;
+    
+    private void Start()
     {
-        
+        Money = _startingMoney;
+        UpdateMoneyText();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateMoneyText() =>  _moneyText.text = Money.ToString();
+
+    public void SubtractMoney(int value)
     {
-        
+        Money -= value;
+        UpdateMoneyText();
     }
 }

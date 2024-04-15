@@ -44,5 +44,7 @@ namespace Core
         private SelectionManager _selectionManager;
         public SelectionManager SelectionManager => _selectionManager =
             _selectionManager == null ? GetComponent<SelectionManager>() : _selectionManager;
+
+        public MoneyManager MoneyManager;
     }
 }
