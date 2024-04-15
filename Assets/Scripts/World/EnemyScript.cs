@@ -12,6 +12,7 @@ public class EnemyScript : MonoBehaviour, IDamageable
     [SerializeField] private float _attackDistance;
     [SerializeField] private int _damageAmount;
     [SerializeField] private float _attackSpeed;
+    [SerializeField] private ParticleSystem _destoryParticles;
     
     [SerializeField] private int _maxHealth;
 
@@ -109,8 +110,11 @@ public class EnemyScript : MonoBehaviour, IDamageable
     {
         Debug.Log("Damaged");
         _health -= damage;
-        
+
         if (_health <= 0)
+        {
+            Instantiate(_destoryParticles, transform.position, Quaternion.identity);
             Destroy(gameObject);
+        }
     }
 }

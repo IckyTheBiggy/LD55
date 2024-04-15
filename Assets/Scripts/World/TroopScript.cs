@@ -15,6 +15,7 @@ namespace World
         public Sprite Sprite;
         [SerializeField] private TroopAI _ai;
         [SerializeField] private LayerMask _relocationMask;
+        [SerializeField] private ParticleSystem _destoryParticles;
 
         private void Start()
         {
@@ -95,7 +96,10 @@ namespace World
             Health -= damage;
 
             if (Health <= 0)
+            {
+                Instantiate(_destoryParticles, transform.position, Quaternion.identity);
                 Destroy(gameObject);
+            }
         }
     }
 }
