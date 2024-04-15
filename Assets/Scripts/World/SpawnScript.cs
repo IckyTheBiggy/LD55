@@ -19,7 +19,7 @@ namespace World
         {
             if (GameManager.Instance.IsRelocating) return;
             if (GameManager.Instance.IsSpawning) return;
-            if (Input.GetKeyDown(KeyCode.Mouse0)) Misc.RestartCoroutine(this, ref _spawnRoutine, SpawnRoutine());
+            if (Input.GetKeyDown(KeyCode.Mouse1)) Misc.RestartCoroutine(this, ref _spawnRoutine, SpawnRoutine());
         }
 
         private Coroutine _spawnRoutine;

@@ -60,7 +60,7 @@ namespace World
             if (IsSpawning) yield break;
             while (true)
             {
-                if (Input.GetKeyDown(KeyCode.R)) GameManager.Instance.IsRelocating = !GameManager.Instance.IsRelocating;
+                if (Input.GetKeyDown(KeyCode.Mouse0)) GameManager.Instance.IsRelocating = !GameManager.Instance.IsRelocating;
                 if (GameManager.Instance.IsRelocating) Relocate();
                 yield return null;
             }
