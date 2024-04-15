@@ -64,6 +64,7 @@ public class EnemyScript : MonoBehaviour, IDamageable
         else
         {
             _agent.SetDestination(_base.position);
+            target = null;
 
             float distanceToBase = Vector3.Distance(transform.position, _base.transform.position);
             if (distanceToBase <= _baseAttackDistance)
