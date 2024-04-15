@@ -112,6 +112,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2525983374652785499, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
+      propertyPath: m_Speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2525983374652785499, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2525983374652785499, guid: 12f22112c572340209fe6089b544bdd1, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
