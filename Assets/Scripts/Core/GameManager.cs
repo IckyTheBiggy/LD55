@@ -1,3 +1,4 @@
+using UI;
 using UnityEngine;
 
 namespace Core
@@ -6,6 +7,8 @@ namespace Core
     {
         public bool IsRelocating;
         public bool IsSpawning;
+        public int SelectedTroop;
+        public TroopSelection SelectedSelection; //I AM SO SORRY FOR THIS BANANA I RLY CBA TO LIVE :sob:
         
         [SerializeField] public float AnimationSpeed = 1;
         

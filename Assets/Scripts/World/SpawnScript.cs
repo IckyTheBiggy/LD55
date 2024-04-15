@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Core;
 using NnUtils.Scripts;
 using UnityEngine;
@@ -10,7 +11,7 @@ namespace World
     {
         private static readonly int Spawn = Animator.StringToHash("Spawn");
         [SerializeField] private Animator _mageAnimator;
-        [SerializeField] private GameObject _troopPrefab;
+        [SerializeField] private List<GameObject> _troopPrefabs;
         [SerializeField] private float _spawnTime = 5;
         [SerializeField] private LayerMask _selectionLayerMask;
         
@@ -30,7 +31,7 @@ namespace World
             
             GameManager.Instance.IsSpawning = true;
             _mageAnimator.SetTrigger(Spawn);
-            Instantiate(_troopPrefab, hit.Value.point, Quaternion.identity);
+            Instantiate(_troopPrefabs[GameManager.Instance.SelectedTroop], hit.Value.point, Quaternion.identity);
             yield return new WaitForSeconds(_spawnTime);
             GameManager.Instance.IsSpawning = false;
             _spawnRoutine = null;
