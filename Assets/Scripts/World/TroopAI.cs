@@ -65,6 +65,7 @@ namespace World
         {
             _destination = position;
             if (!_agent.SetDestination(position)) return;
+            Debug.Log("Here");
             _isRelocating = true;
         }
     }
