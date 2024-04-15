@@ -6,6 +6,7 @@ namespace Core
     {
         public bool IsRelocating;
         public bool IsSpawning;
+        public int SelectedTroop;
         
         [SerializeField] public float AnimationSpeed = 1;
         
