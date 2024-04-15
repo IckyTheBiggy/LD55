@@ -15,6 +15,7 @@ public class EnemyScript : MonoBehaviour, IDamageable
     
     [SerializeField] private int _maxHealth;
 
+    private Vector3 _destination;
     private Animator _animator;
     private bool _attacking;
 
@@ -32,26 +33,11 @@ public class EnemyScript : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        GameObject target = null;
+        GameObject target = FindTarget();
         
-        if (_rb.velocity.magnitude > 0)
-            _animator.SetBool("Moving", true);
-        else
-            _animator.SetBool("Moving", false);
-
-        Collider[] troops = Physics.OverlapSphere(transform.position, _detectionRange);
-        foreach (var troop in troops)
-        {
-            if (troop.CompareTag("Troop"))
-            {
-                target = troop.gameObject;
-                break;
-            }
-        }
-
         if (target != null)
         {
-            _agent.SetDestination(target.transform.position);
+            Relocate(target.transform.position);
 
             float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
             if (distanceToTarget <= _attackDistance)
@@ -63,8 +49,7 @@ public class EnemyScript : MonoBehaviour, IDamageable
 
         else
         {
-            _agent.SetDestination(_base.position);
-            target = null;
+            Relocate(_base.position);
 
             float distanceToBase = Vector3.Distance(transform.position, _base.transform.position);
             if (distanceToBase <= _baseAttackDistance)
@@ -73,6 +58,18 @@ public class EnemyScript : MonoBehaviour, IDamageable
                 Attack(_base.gameObject);
             }
         }
+
+        _agent.SetDestination(_destination);
+        
+        if (_rb.velocity.magnitude > 0)
+            _animator.SetBool("Moving", true);
+        else
+            _animator.SetBool("Moving", false);
+    }
+
+    private void Relocate(Vector3 position)
+    {
+        _destination = position;
     }
 
     private void Attack(GameObject objectToAttack)
@@ -91,9 +88,21 @@ public class EnemyScript : MonoBehaviour, IDamageable
         }
     }
 
-    private void ResetAttack()
+    private void ResetAttack() => _attacking = false;
+    
+    private GameObject FindTarget()
     {
-        _attacking = false;
+        Collider[] troops = Physics.OverlapSphere(transform.position, _detectionRange);
+        foreach (var troop in troops)
+        {
+            if (troop.CompareTag("Troop"))
+            {
+                return troop.gameObject;
+                break;
+            }
+        }
+
+        return null;
     }
 
     public void Damage(int damage)
