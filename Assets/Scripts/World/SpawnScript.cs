@@ -12,6 +12,7 @@ namespace World
         private static readonly int Spawn = Animator.StringToHash("Spawn");
         [SerializeField] private Animator _mageAnimator;
         [SerializeField] private List<GameObject> _troopPrefabs;
+        [SerializeField] private List<int> _troopCosts;
         [SerializeField] private float _spawnTime = 5;
         [SerializeField] private LayerMask _selectionLayerMask;
         
@@ -28,13 +29,19 @@ namespace World
         {
             var hit = GetSpawnHit();
             if (hit == null) yield break;
-            
-            GameManager.Instance.IsSpawning = true;
-            _mageAnimator.SetTrigger(Spawn);
-            Instantiate(_troopPrefabs[GameManager.Instance.SelectedTroop], hit.Value.point, Quaternion.identity);
-            yield return new WaitForSeconds(_spawnTime);
-            GameManager.Instance.IsSpawning = false;
-            _spawnRoutine = null;
+
+            if (GameManager.Instance.MoneyManager.Money >= _troopCosts[GameManager.Instance.SelectedTroop] && GameManager.Instance._canSpawnTroops)
+            {
+                GameManager.Instance.IsSpawning = true;
+                _mageAnimator.SetTrigger(Spawn);
+                var troop =
+                    Instantiate(_troopPrefabs[GameManager.Instance.SelectedTroop], hit.Value.point, Quaternion.identity);
+                GameManager.Instance.Troops.Add(troop);
+                GameManager.Instance.MoneyManager.SubtractMoney(_troopCosts[GameManager.Instance.SelectedTroop]);
+                yield return new WaitForSeconds(_spawnTime);
+                GameManager.Instance.IsSpawning = false;
+                _spawnRoutine = null;
+            }
         }
 
         private RaycastHit? GetSpawnHit()

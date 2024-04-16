@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using NnUtils.Scripts.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BaseScript : MonoBehaviour, IDamageable
@@ -16,10 +18,7 @@ public class BaseScript : MonoBehaviour, IDamageable
         _healthBar.Value = _health;
     }
 
-    private void HandleBaseDestruction()
-    {
-        Debug.Log("Game Over");
-    }
+    private void HandleBaseDestruction() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
     public void Damage(int damage)
     {

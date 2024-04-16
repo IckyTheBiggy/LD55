@@ -1,3 +1,4 @@
+using Core;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -34,6 +35,11 @@ namespace World
             _destination = target == null ? transform.position : target.transform.position;
             _agent.SetDestination(_destination);
             if (target != null) Attack(target);
+            
+            if (_agent.hasPath)
+                _animator.SetBool("Moving", true);
+            else
+                _animator.SetBool("Moving", false);
         }
 
         private GameObject GetTarget()
@@ -52,6 +58,7 @@ namespace World
 
             var damageable = target.GetComponent<IDamageable>();
             damageable?.Damage(_damage);
+            GameManager.Instance._audioManager.PlaySFX(AudioManager.Sounds.Sword, 0.2f);
             _animator.SetTrigger("Attacking");
             _attacking = true;
             Invoke("ResetAttack", _attackSpeed);

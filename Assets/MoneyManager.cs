@@ -23,4 +23,10 @@ public class MoneyManager : MonoBehaviour
         Money -= value;
         UpdateMoneyText();
     }
+
+    public void AddMoney(int value)
+    {
+        Money += value;
+        UpdateMoneyText();
+    }
 }

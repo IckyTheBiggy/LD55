@@ -2,10 +2,13 @@ using System;
 using Core;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class EnemyScript : MonoBehaviour, IDamageable
 {
     [SerializeField] private NavMeshAgent _agent;
+    [SerializeField] private Slider _healthBar;
     [SerializeField] private float _detectionRange;
     [SerializeField] private float _baseAttackDistance;
     [SerializeField] private float _attackDistance;
@@ -30,6 +33,8 @@ public class EnemyScript : MonoBehaviour, IDamageable
         _health = _maxHealth;
         
         _base = GameManager.Instance.Base;
+        _healthBar.maxValue = _maxHealth;
+        _healthBar.value = _health;
     }
 
     private void Update()
@@ -62,12 +67,21 @@ public class EnemyScript : MonoBehaviour, IDamageable
 
         _agent.SetDestination(_destination);
         
+        if (_agent.hasPath)
+            _animator.SetBool("Moving", true);
+        else
+            _animator.SetBool("Moving", false);
+        
     }
 
     private void Relocate(Vector3 position)
     {
         _destination = position;
     }
+
+    public void IncreaseDamageAmount(int value) => _damageAmount += value;
+
+    public void IncreaseHealthAmount(int value) => _maxHealth += value;
 
     private void Attack(GameObject objectToAttack)
     {
@@ -79,6 +93,7 @@ public class EnemyScript : MonoBehaviour, IDamageable
             if (damageable != null)
                 damageable.Damage(_damageAmount);
             
+            GameManager.Instance._audioManager.PlaySFX(AudioManager.Sounds.EnemyAttack, 0.2f);
             _attacking = true;
             
             Invoke("ResetAttack", _attackSpeed);
@@ -106,10 +121,12 @@ public class EnemyScript : MonoBehaviour, IDamageable
     {
         _health -= damage;
         Instantiate(_hitParticles, transform.position, Quaternion.identity);
+        _healthBar.value = _health;
 
         if (_health <= 0)
         {
             Instantiate(_destoryParticles, transform.position, Quaternion.identity);
+            GameManager.Instance.MoneyManager.AddMoney(35);
             Destroy(gameObject);
         }
     }

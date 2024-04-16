@@ -79,10 +79,12 @@ namespace World
         #region ISelectable
         public void PointerEnter()
         {
+            GameManager.Instance.WaveCounter.SetActive(false);
         }
 
         public void PointerExit()
         {
+            GameManager.Instance.WaveCounter.SetActive(true);
         }
 
         public void PointerDown()
@@ -131,6 +133,7 @@ namespace World
             if (Health <= 0)
             {
                 Instantiate(_destroyParticles, transform.position, Quaternion.identity);
+                GameManager.Instance.Troops.Remove(gameObject);
                 Destroy(gameObject);
             }
         }
